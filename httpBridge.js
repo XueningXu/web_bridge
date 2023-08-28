@@ -1,6 +1,6 @@
 function startWebhook() {
-    const remoteServerUrl = 'https://192.168.1.154:34567'; // Replace with actual remote webhook URL
-    const localServerUrl = 'https://192.168.1.182:40291'; // Replace with your local server URL
+    const remoteServerUrl = 'http://192.168.1.154:34567'; // Replace with actual remote webhook URL
+    const localServerUrl = 'http://192.168.1.182:40291'; // Replace with your local server URL
 
     const payload = {
         message: 'Get Trigger'
