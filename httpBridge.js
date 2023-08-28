@@ -1,5 +1,5 @@
 function startWebhook() {
-    const remoteServerUrl = 'http://192.168.1.154:34567'; // Replace with actual remote webhook URL
+    const remoteServerUrl = 'http://remains.ddns.net:34567'; // Replace with actual remote webhook URL
     const localServerUrl = 'http://192.168.1.182:40291'; // Replace with your local server URL
 
     const payload = {
