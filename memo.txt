@@ -1,0 +1,25 @@
+Method 1: combine scanPort.js and httpBridge.js
+
+1) scanPort.js
+scan port number from 30000 to 65535, taking around 30 seconds, store to a variable.
+
+2) httpBridge.js
+read the port number from the variable and send command to malicious edge driver upon receiving trigger from attack.
+
+Issue Not Solved:
+probably due to high volume of responses received by the browser, the port number if not assigned to the variable as expected.
+As a result, httpBridge.js still does not know the port number
+
+
+---------------------------------------------------------------------------
+
+
+(workaround) Method 2: use the final.js
+Since currently cannot record the port number to the variable, we do not need to record the port number anymore.
+Scanning takes exact the same time as sending commands to the target edge driver. Therefore, every time an attacker wants to do a remote trigger, the webpage sends the command to the target malicious edge driver by traversing all the port number, and one of them can be received by the malicious edge driver (similar to the scanning). One benefit of this approach is that we can adapt to scenario where the port number is somehow changed, and we can still send the command to it by traversing all the port numbers. 
+
+
+
+Think: 
+1. this requires the webpage remain to be opened for at least 30 seconds (attacker's intent is to attack for the first poll). If the attacker wants to launch attacks at will, it also requires the webpage to be on all the time. That is the shortcoming of using a webpage, compared to using a local compromised always-on devices, such as PC, laptop.
+2. what if the user only opens this webpage once and does not open it anymore.
